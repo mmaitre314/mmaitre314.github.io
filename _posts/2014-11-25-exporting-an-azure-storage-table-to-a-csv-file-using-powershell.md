@@ -26,10 +26,10 @@ function EntityToObject ($item)
     $p | Add-Member -Name Timestamp -TypeName datetime -Value $item.Timestamp -MemberType NoteProperty
 
     $item.Properties.Keys | foreach { 
-		$type = $item.Properties[$_].PropertyType;
-		$value = $item.Properties[$_].PropertyAsObject; 
-		Add-Member -InputObject $p -Name $_ -Value $value -TypeName $type -MemberType NoteProperty -Force 
-		}
+        $type = $item.Properties[$_].PropertyType;
+        $value = $item.Properties[$_].PropertyAsObject; 
+        Add-Member -InputObject $p -Name $_ -Value $value -TypeName $type -MemberType NoteProperty -Force 
+        }
     $p
 }
 {% endhighlight %}
