@@ -1,2 +1,1 @@
 exclude: [GitHubPages.sln, GitHubPages.v12.suo, Gemfile, Gemfile.lock, README.md]
-highlighter: rouge
