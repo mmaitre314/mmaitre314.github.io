@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		Gemfile = Gemfile
+		Gemfile.lock = Gemfile.lock
 		index.html = index.html
 		params.json = params.json
 		README.md = README.md
@@ -68,6 +70,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stylesheets", "stylesheets"
 		stylesheets\styles.css = stylesheets\styles.css
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_includes", "_includes", "{63E7D1A4-F317-498D-B55E-507FDEB98EE0}"
+	ProjectSection(SolutionItems) = preProject
+		_includes\comments.html = _includes\comments.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_layouts", "_layouts", "{4773AF28-2592-4AC9-91BD-0EACA002E36E}"
+	ProjectSection(SolutionItems) = preProject
+		_layouts\post.html = _layouts\post.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB155B-6B14-412A-894D-6CE491E3262F}"
+	ProjectSection(SolutionItems) = preProject
+		_posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md = _posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,5 +94,8 @@ Global
 		{D04C4D6F-9611-4972-92E6-9E9158F6964D} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
 		{8C508256-3A1E-480A-AE3C-D3E7E693FB20} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
 		{3B8B6AF6-C2EE-439D-96CD-82EE68A57F2B} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
+		{63E7D1A4-F317-498D-B55E-507FDEB98EE0} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
+		{4773AF28-2592-4AC9-91BD-0EACA002E36E} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
+		{C1AB155B-6B14-412A-894D-6CE491E3262F} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
 	EndGlobalSection
 EndGlobal
