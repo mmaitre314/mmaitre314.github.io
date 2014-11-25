@@ -29,7 +29,7 @@ function EntityToObject ($item)
         $type = $item.Properties[$_].PropertyType;
         $value = $item.Properties[$_].PropertyAsObject; 
         Add-Member -InputObject $p -Name $_ -Value $value -TypeName $type -MemberType NoteProperty -Force 
-        }
+    }
     $p
 }
 {% endhighlight %}
