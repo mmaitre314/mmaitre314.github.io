@@ -33,7 +33,8 @@ Date parsing is similar in Matlab, using datenum():
 
 {% highlight Matlab %}
 >> dateFromAzureTable = '11/26/2014 5:31:16 AM'
->> dateUtc = datenum(dateFromAzureTable, 'mm/dd/yyyy HH:MM:SS AM'); datestr(dateUtc)
+>> dateUtc = datenum(dateFromAzureTable, 'mm/dd/yyyy HH:MM:SS AM')
+>> datestr(dateUtc)
 ans =
 26-Nov-2014 05:31:16
 {% endhighlight %}
@@ -42,9 +43,8 @@ The problem with Matlab is that until R2014a it did not support the notion of ti
 
 {% highlight Matlab %}
 >> offsetUtcToLocal = java.util.TimeZone.getDefault().getRawOffset() / (1000 * 60 * 60 * 24)
-offsetUtcToLocal =
-   -0.3333
->> dateLocal = dateUtc + offsetUtcToLocal; datestr(dateLocal)
+>> dateLocal = dateUtc + offsetUtcToLocal
+>> datestr(dateLocal)
 ans =
 25-Nov-2014 21:31:16
 {% endhighlight %}
