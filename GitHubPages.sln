@@ -84,6 +84,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB155B-6B14-412A-894D-6CE491E3262F}"
 	ProjectSection(SolutionItems) = preProject
 		_posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md = _posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md
+		_posts\2014-11-26-importing-datetime-from-azure-table-to-r-and-matlab.md = _posts\2014-11-26-importing-datetime-from-azure-table-to-r-and-matlab.md
 	EndProjectSection
 EndProject
 Global
