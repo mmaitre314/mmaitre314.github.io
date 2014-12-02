@@ -14,7 +14,7 @@ In Field Medic custom profiles are selected by going to the 'Advanced' page, ope
 
 <img src="{{ site.url }}/images/2014-12-01-FieldMedic-Main.png" alt="Main" style="width: 200px;"/>|<img src="{{ site.url }}/images/2014-12-01-FieldMedic-Advanced.png" alt="Advanced" style="width: 200px;"/>|<img src="{{ site.url }}/images/2014-12-01-FieldMedic-Categories.png" alt="Categories" style="width: 200px;"/>
 
-At that point the app is ready for logging. A typical log session consists in:
+At that point the Field Medic is ready for logging. A typical log session consists in:
 
 - opening Field Medic and tapping 'Start Logging'
 - opening the app being debugged and going through the repro steps
