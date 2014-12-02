@@ -53,6 +53,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fonts", "Fonts", "{E26DD37A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D6F-9611-4972-92E6-9E9158F6964D}"
 	ProjectSection(SolutionItems) = preProject
+		images\2014-12-01-FieldMedic-Advanced.png = images\2014-12-01-FieldMedic-Advanced.png
+		images\2014-12-01-FieldMedic-Categories.png = images\2014-12-01-FieldMedic-Categories.png
+		images\2014-12-01-FieldMedic-Main.png = images\2014-12-01-FieldMedic-Main.png
+		images\2014-12-01-WPA.png = images\2014-12-01-WPA.png
 		images\bullet.png = images\bullet.png
 		images\hr.gif = images\hr.gif
 		images\nav-bg.gif = images\nav-bg.gif
@@ -85,6 +89,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB15
 	ProjectSection(SolutionItems) = preProject
 		_posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md = _posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md
 		_posts\2014-11-26-importing-datetime-from-azure-table-to-r-and-matlab.md = _posts\2014-11-26-importing-datetime-from-azure-table-to-r-and-matlab.md
+		_posts\2014-12-01-field-medic-custom-logging.md = _posts\2014-12-01-field-medic-custom-logging.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F57B2154-F4D6-4515-B404-A34444D62B4A}"
+	ProjectSection(SolutionItems) = preProject
+		download\MultimediaMem.wprp = download\MultimediaMem.wprp
+		download\MultimediaPerf.wprp = download\MultimediaPerf.wprp
 	EndProjectSection
 EndProject
 Global
@@ -99,5 +110,6 @@ Global
 		{63E7D1A4-F317-498D-B55E-507FDEB98EE0} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
 		{4773AF28-2592-4AC9-91BD-0EACA002E36E} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
 		{C1AB155B-6B14-412A-894D-6CE491E3262F} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
+		{F57B2154-F4D6-4515-B404-A34444D62B4A} = {A2A684BD-D8AA-4F14-BACA-AF820A26D72A}
 	EndGlobalSection
 EndGlobal
