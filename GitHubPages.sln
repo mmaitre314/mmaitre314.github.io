@@ -96,6 +96,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F5
 	ProjectSection(SolutionItems) = preProject
 		download\MultimediaMem.wprp = download\MultimediaMem.wprp
 		download\MultimediaPerf.wprp = download\MultimediaPerf.wprp
+		download\TraceWpp.wprp = download\TraceWpp.wprp
 	EndProjectSection
 EndProject
 Global
