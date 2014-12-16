@@ -59,6 +59,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D
 		images\2014-12-01-FieldMedic-Categories.png = images\2014-12-01-FieldMedic-Categories.png
 		images\2014-12-01-FieldMedic-Main.png = images\2014-12-01-FieldMedic-Main.png
 		images\2014-12-01-WPA.png = images\2014-12-01-WPA.png
+		images\2014-12-16-WPA.PNG = images\2014-12-16-WPA.PNG
 		images\bullet.png = images\bullet.png
 		images\hr.gif = images\hr.gif
 		images\nav-bg.gif = images\nav-bg.gif
@@ -92,10 +93,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB15
 		_posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md = _posts\2014-11-25-exporting-an-azure-storage-table-to-a-csv-file-using-powershell.md
 		_posts\2014-11-26-importing-datetime-from-azure-table-to-r-and-matlab.md = _posts\2014-11-26-importing-datetime-from-azure-table-to-r-and-matlab.md
 		_posts\2014-12-01-field-medic-custom-logging.md = _posts\2014-12-01-field-medic-custom-logging.md
+		_posts\2014-12-16-field-medic-and-eventsource.md = _posts\2014-12-16-field-medic-and-eventsource.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F57B2154-F4D6-4515-B404-A34444D62B4A}"
 	ProjectSection(SolutionItems) = preProject
+		download\Component.wprp = download\Component.wprp
 		download\MultimediaMem.wprp = download\MultimediaMem.wprp
 		download\MultimediaPerf.wprp = download\MultimediaPerf.wprp
 		download\TraceWpp.wprp = download\TraceWpp.wprp

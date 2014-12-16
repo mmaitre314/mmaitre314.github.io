@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone='yes'?>
+
+<WindowsPerformanceRecorder Version="1.0">
+  <Profiles>
+    
+    <SystemCollector Id="SystemCollector" Name="System Collector">
+      <BufferSize Value="128"/>
+      <Buffers Value="40"/>
+    </SystemCollector>
+    
+    <EventCollector Id="EventCollector" Name="Event Collector">
+      <BufferSize Value="128"/>
+      <Buffers Value="40"/>
+    </EventCollector>
+
+    <SystemProvider Id="SystemProvider">
+      <Keywords>
+        <Keyword Value="CpuConfig"/>
+        <Keyword Value="CSwitch"/>
+        <Keyword Value="DPC"/>
+        <Keyword Value="Loader"/>
+        <Keyword Value="ProcessThread"/>
+        <Keyword Value="ReadyThread"/>
+        <Keyword Value="SampledProfile"/>
+      </Keywords>
+      <Stacks>
+        <Stack Value="CSwitch"/>
+        <Stack Value="ReadyThread"/>
+        <Stack Value="ThreadCreate"/>
+        <Stack Value="SampledProfile"/>
+      </Stacks>
+    </SystemProvider>
+    
+    <EventProvider Id="EventProvider_Company_Product_Component" Name="*Company-Product-Component" Level="5"/>
+    <EventProvider Id="EventProvider_Microsoft_Windows_Runtime_Media" Name="8F0DB3A8-299B-4D64-A4ED-907B409D4584" Level="5"/>    
+                
+    <Profile Id="Profile.Verbose.File" LoggingMode="File" Name="Profile" DetailLevel="Verbose">
+      <Collectors>
+        <SystemCollectorId Value="SystemCollector">
+          <SystemProviderId Value="SystemProvider"/>
+        </SystemCollectorId>      
+        <EventCollectorId Value="EventCollector">
+          <EventProviders>
+            <EventProviderId Value="EventProvider_Company_Product_Component"/>
+            <EventProviderId Value="EventProvider_Microsoft_Windows_Runtime_Media"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+  </Profiles>
+
+</WindowsPerformanceRecorder>
