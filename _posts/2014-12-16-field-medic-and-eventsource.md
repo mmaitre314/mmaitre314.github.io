@@ -4,7 +4,7 @@ title: Field Medic and EventSource
 comments: true
 ---
 
-A previous [blog]({{ site.url }}/2014-12-16-field-medic-and-eventsource.md) covered how to use [Field Medic](http://www.windowsphone.com/en-us/store/app/field-medic/73c58570-d5a7-46f8-b1b2-2a90024fc29c) to capture event logs on Windows Phone. This is only half of the story though: something needs to generate those events in the first place. This is where [EventSource](http://blogs.msdn.com/b/vancem/archive/2012/08/13/windows-high-speed-logging-etw-in-c-net-using-system-diagnostics-tracing-eventsource.aspx) comes into play. It enables adding performance events (markers for operation beginning and end, etc.) and unstructured traces (aka printf) to .NET apps:
+A previous [blog]({{ site.url }}/2014-12-16-field-medic-and-eventsource.md) covered how to use [Field Medic](http://www.windowsphone.com/en-us/store/app/field-medic/73c58570-d5a7-46f8-b1b2-2a90024fc29c) to capture event logs on Windows Phone. This is only half of the story though: something needs to generate those events in the first place. This is where [EventSource](http://blogs.msdn.com/b/vancem/archive/2012/08/13/windows-high-speed-logging-etw-in-c-net-using-system-diagnostics-tracing-eventsource.aspx) comes into play. It enables quickly adding performance events (markers for operation beginning and end, etc.) and unstructured traces (aka printf) to .NET apps:
 
 {% highlight csharp %}
 Log.Events.ProcessImageStart();
