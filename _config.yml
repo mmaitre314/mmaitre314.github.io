@@ -1,4 +1,4 @@
 exclude: [GitHubPages.sln, GitHubPages.v12.suo, Gemfile, Gemfile.lock, README.md]
 name: Matthieu Maitre's blog
 description: Notes to self
-url: http://mmaitre314.github.io/
+url: http://mmaitre314.github.io
