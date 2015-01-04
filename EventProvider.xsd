@@ -10,6 +10,11 @@
   </xs:simpleType>
 
   <xs:simpleType name="Level">
+    <xs:annotation>
+      <xs:documentation>
+        Default: Informational.
+      </xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="Error" />
       <xs:enumeration value="Warning" />
@@ -73,6 +78,11 @@
         </xs:element>
 
         <xs:element name="Task" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              An event with a beginning and an end.
+            </xs:documentation>
+          </xs:annotation>
           <xs:complexType>
             <xs:sequence>
 
