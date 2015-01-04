@@ -31,27 +31,42 @@
       <xs:enumeration value="UInt64" />
       <xs:enumeration value="Float" />
       <xs:enumeration value="Double" />
-      <xs:enumeration value="GUID" />
+      <xs:enumeration value="Guid" />
       <xs:enumeration value="Pointer" />
       <xs:enumeration value="AnsiString" />
       <xs:enumeration value="UnicodeString" />
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:complexType name="Data">
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+  <xs:simpleType name="String">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AnsiString" />
+      <xs:enumeration value="UnicodeString" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Arg">
     <xs:attribute name="Type" type="Type" use="required"/>
+    <xs:attribute name="Name" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="VarArgs">
+    <xs:attribute name="Type" type="String" use="required"/>
+    <xs:attribute name="Name" type="xs:string" use="required"/>
   </xs:complexType>
 
   <xs:complexType name="EventProvider">
     <xs:sequence>
       <xs:choice maxOccurs="unbounded">
-        
+
         <xs:element name="Event" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Data" type="Data" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:sequence>
+            <xs:choice>
+              <xs:sequence>
+                <xs:element name="Arg" type="Arg" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:element name="VarArgs" type="VarArgs" minOccurs="0" maxOccurs="1"/>
+            </xs:choice>
             <xs:attribute name="Name" type="xs:string" use="required"/>
             <xs:attribute name="Level" type="Level" use="optional" default="Informational"/>
           </xs:complexType>
@@ -60,29 +75,29 @@
         <xs:element name="Task" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
             <xs:sequence>
-              
+
               <xs:element name="Start" minOccurs="1" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="Data" type="Data" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="Arg" type="Arg" minOccurs="0" maxOccurs="unbounded"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-              
+
               <xs:element name="Stop" minOccurs="1" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="Data" type="Data" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="Arg" type="Arg" minOccurs="0" maxOccurs="unbounded"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-              
+
             </xs:sequence>
             <xs:attribute name="Name" type="xs:string" use="required"/>
             <xs:attribute name="Level" type="Level" use="optional" default="Informational"/>
           </xs:complexType>
         </xs:element>
-        
+
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="Name" type="xs:string" use="required"/>
