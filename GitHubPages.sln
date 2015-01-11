@@ -67,6 +67,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D
 		images\bullet.png = images\bullet.png
 		images\hr.gif = images\hr.gif
 		images\nav-bg.gif = images\nav-bg.gif
+		images\TraceEtwWpa.PNG = images\TraceEtwWpa.PNG
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "javascripts", "javascripts", "{8C508256-3A1E-480A-AE3C-D3E7E693FB20}"
