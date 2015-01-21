@@ -68,6 +68,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D
 		images\2015-01-11-VsProject.png = images\2015-01-11-VsProject.png
 		images\bullet.png = images\bullet.png
 		images\CS_W_MediaReader_IpCam.jpg = images\CS_W_MediaReader_IpCam.jpg
+		images\CS_W_MediaReader_SaveAllFrameAsJpeg.JPG = images\CS_W_MediaReader_SaveAllFrameAsJpeg.JPG
 		images\hr.gif = images\hr.gif
 		images\nav-bg.gif = images\nav-bg.gif
 		images\TraceEtwWpa.PNG = images\TraceEtwWpa.PNG
