@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Custom Content Type in Visual Studio Projects"
+title: "Custom Content Type in C++ Visual Studio Projects"
 comments: true
 ---
 
-For the [TraceEtw](https://github.com/mmaitre314/TraceEtw) project I needed to generate code (headers, manifests, etc.) during the build and have the build consume those files on the fly. It turns out that Visual Studio and MSBuild provide a high level of customization for both the build process and the IDE UI. Moreover, this customization is all contained in the project files so it can be neatly packaged using NuGet to make it reusable. This blog brings together the various pieces needed to make that work.
+For the [TraceEtw](https://github.com/mmaitre314/TraceEtw) project I needed to generate code (headers, manifests, etc.) during the build and have the build consume those files on the fly. It turns out that Visual Studio C++ projects (.vcxproj) and MSBuild support a high level of customization for both the build process and the IDE UI. Moreover, this customization is all contained in the project files so it can be neatly packaged using NuGet to make it reusable. This blog brings together the various pieces needed to make that work.
 
 Customization begins by defining a new file extension (say .epx) and associate it with a content type in an XML config file (here called EventProvider.xml):
 
