@@ -112,7 +112,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F57B2154-F4D6-4515-B404-A34444D62B4A}"
 	ProjectSection(SolutionItems) = preProject
 		download\Component.wprp = download\Component.wprp
+		download\MultimediaMem-desktop.wprp = download\MultimediaMem-desktop.wprp
 		download\MultimediaMem.wprp = download\MultimediaMem.wprp
+		download\MultimediaPerf-desktop.wprp = download\MultimediaPerf-desktop.wprp
 		download\MultimediaPerf.wprp = download\MultimediaPerf.wprp
 		download\TraceWpp.wprp = download\TraceWpp.wprp
 	EndProjectSection

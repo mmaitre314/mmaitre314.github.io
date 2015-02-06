@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone='yes'?>
+
+<WindowsPerformanceRecorder Version="1.0">
+  <Profiles>
+  
+    <!-- System Collectors -->
+    <SystemCollector Id="SystemCollector_MultimediaMem" Name="MultimediaMem Kernel Logger" Realtime="false">
+      <BufferSize Value="1024"/>
+      <Buffers Value="40"/>
+    </SystemCollector>
+  
+    <!-- Event Collectors -->
+    <EventCollector Id="EventCollector_MultimediaMem" Name="MultimediaMem Category Event Collector" Private="false" ProcessPrivate="false" Secure="false" Realtime="false">
+      <BufferSize Value="1024"/>
+      <Buffers Value="40"/>
+    </EventCollector>
+
+    <!-- System Providers -->
+    <SystemProvider Id="SystemProvider_MultimediaMem">
+      <Keywords>
+        <!-- keywords doc: http://msdn.microsoft.com/en-us/library/windows/hardware/hh448147.aspx -->
+        <Keyword Value="HardFaults"/>
+        <Keyword Value="Memory"/>
+        <Keyword Value="MemoryInfo"/>
+        <Keyword Value="MemoryInfoWS"/>
+        <Keyword Value="Pool"/>
+        <Keyword Value="ReferenceSet"/>
+        <Keyword Value="SampledProfile"/>
+        <Keyword Value="VirtualAllocation"/>
+      </Keywords>
+      <Stacks>
+        <!-- values doc: http://msdn.microsoft.com/en-us/library/windows/hardware/hh448161.aspx -->
+        <Stack Value="HardFault"/>
+        <Stack Value="HeapAllocation"/>
+        <Stack Value="HeapFree"/>
+        <Stack Value="PoolAllocation"/>
+        <Stack Value="PoolAllocationSession"/>        
+        <Stack Value="PageRangeAccess"/>
+        <Stack Value="SampledProfile"/>
+        <Stack Value="VirtualAllocation"/>
+        <Stack Value="VirtualFree"/>
+      </Stacks>
+    </SystemProvider>
+
+    <!-- ETW Event Providers -->
+    <EventProvider Id="EventProvider_Microsoft-Windows-MF" Name="A7364E1A-894F-4B3D-A930-2ED9C8C4C811" Level="4"/>    
+    <EventProvider Id="EventProvider_Microsoft-Windows-MediaFoundation-MFCaptureEngine" Name="B8197C10-845F-40CA-82AB-9341E98CFC2B" Level="4"/>
+    <EventProvider Id="EventProvider_Microsoft-Windows-MediaFoundation-MFPlat" Name="BC97B970-D001-482F-8745-B8D7D5759F99" Level="4"/>
+    <EventProvider Id="EventProvider_Microsoft-Windows-MediaFoundation-MFReadWrite" Name="4B7EAC67-FC53-448C-A49D-7CC6DB524DA7" Level="4"/>
+    <EventProvider Id="EventProvider_Microsoft_Windows_MediaFoundation_MSVProc" Name="A4112D1A-6DFA-476e-BB75-E350D24934E1" Level="5"/>
+    <EventProvider Id="EventProvider_Microsoft_Windows_MediaFoundation_Performance" Name="f404b94e-27e0-4384-bfe8-1d8d390b0aa3" Level="5"/>
+    <EventProvider Id="EventProvider_Microsoft_Windows_MediaFoundation_Performance_Core" Name="B20E65AC-C905-4014-8F78-1B6A508142EB" Level="5"/>
+    <EventProvider Id="EventProvider_Microsoft_Windows_MediaFoundation_Platform" Name="bc97b970-d001-482f-8745-b8d7d5759f99" Level="5"/>
+    <EventProvider Id="EventProvider_Microsoft-Windows-Runtime-Media" Name="8F0DB3A8-299B-4D64-A4ED-907B409D4584" Level="5"/>
+    <EventProvider Id="EventProvider_Microsoft-Windows-VideoEditing" Name="ACABB288-1997-439b-808B-6FFB52B3488F" Level="5"/>
+    <EventProvider Id="EventProvider_Microsoft-Windows-WinRT-Error" Name="a86f8471-c31d-4fbc-a035-665d06047b03" Level="5"/>
+                
+    <!-- Profiles -->
+    <Profile Id="MultimediaMemCategory.Verbose.File" LoggingMode="File" Name="MultimediaMemCategory" DetailLevel="Verbose" Description="Multimedia memory">
+      <Collectors>
+      
+        <!-- System Providers -->
+        <SystemCollectorId Value="SystemCollector_MultimediaMem">
+          <SystemProviderId Value="SystemProvider_MultimediaMem"/>
+        </SystemCollectorId>
+      
+        <EventCollectorId Value="EventCollector_MultimediaMem">
+          <EventProviders>
+          
+            <!-- ETW Event Providers -->
+            <EventProviderId Value="EventProvider_Microsoft-Windows-MF"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-MediaFoundation-MFCaptureEngine"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-MediaFoundation-MFPlat"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-MediaFoundation-MFReadWrite"/>
+            <EventProviderId Value="EventProvider_Microsoft_Windows_MediaFoundation_MSVProc"/>
+            <EventProviderId Value="EventProvider_Microsoft_Windows_MediaFoundation_Performance"/>
+            <EventProviderId Value="EventProvider_Microsoft_Windows_MediaFoundation_Performance_Core"/>
+            <EventProviderId Value="EventProvider_Microsoft_Windows_MediaFoundation_Platform"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-Runtime-Media"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-VideoEditing"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-WinRT-Error"/>
+            
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    
+    <Profile Id="MultimediaMemCategory.Verbose.Memory" LoggingMode="Memory" Name="MultimediaMemCategory" DetailLevel="Verbose" Description="Multimedia memory" Base="MultimediaMemCategory.Verbose.File"  />
+  </Profiles>
+
+  <TraceMergeProperties>
+    <TraceMergeProperty  Id="TraceMerge_Default" Name="TraceMerge_Default">
+      <CustomEvents>
+        <CustomEvent Value="ImageId"/>
+        <CustomEvent Value="BuildInfo"/>
+        <CustomEvent Value="VolumeMapping"/>
+        <CustomEvent Value="EventMetadata"/>
+        <CustomEvent Value="PerfTrackMetadata"/>
+        <CustomEvent Value="WinSAT"/>
+        <CustomEvent Value="NetworkInterface"/>
+      </CustomEvents>
+    </TraceMergeProperty>
+  </TraceMergeProperties>
+
+</WindowsPerformanceRecorder>
