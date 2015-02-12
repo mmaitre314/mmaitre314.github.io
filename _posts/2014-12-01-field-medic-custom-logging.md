@@ -6,7 +6,7 @@ comments: true
 
 Field Medic is a Windows Phone app recording system events, which comes handy when debugging complex issues in Windows Phone apps. Besides a set of built-in logging profiles, it supports custom profiles targeted at more specific issues.
 
-To install the app, search for 'Field Medic' in the Windows Phone Store or open [this link](http://www.windowsphone.com/en-us/store/app/field-medic/73c58570-d5a7-46f8-b1b2-2a90024fc29c). Then connect the Phone via USB and open the folder 'This PC\Windows Phone\Phone\FieldMedic\CustomProfiles' in Explorer, creating missing folders in that path as needed.
+To install the app, search for 'Field Medic' in the Windows Phone Store or open [this link](http://www.windowsphone.com/en-us/store/app/field-medic/73c58570-d5a7-46f8-b1b2-2a90024fc29c). Then connect the Phone via USB and open the folder 'This PC\Windows Phone\Phone\Documents\FieldMedic\CustomProfiles' in Explorer, creating missing folders in that path as needed.
 
 Field Medic uses [WPRP files](http://msdn.microsoft.com/en-us/library/windows/hardware/hh448223.aspx) to define custom profiles. [MultimediaMem.wprp]({{ site.url }}/download/MultimediaMem.wprp) and [MultimediaPerf.wprp]({{ site.url }}/download/MultimediaPerf.wprp) are two such files targeting the multimedia stack, the former focusing on memory usage and the latter on performance. Copy those two files to the 'CustomProfiles' folder on the Phone.
 
