@@ -72,6 +72,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D
 		images\hr.gif = images\hr.gif
 		images\MediaReaderImageWatch.png = images\MediaReaderImageWatch.png
 		images\nav-bg.gif = images\nav-bg.gif
+		images\QrCodeDetector.jpg = images\QrCodeDetector.jpg
 		images\TalkFaster.jpg = images\TalkFaster.jpg
 		images\TraceEtwWpa.PNG = images\TraceEtwWpa.PNG
 	EndProjectSection
