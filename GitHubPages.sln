@@ -110,6 +110,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB15
 		_posts\2014-12-25-secure-string-code-generator-a-breakdown.md = _posts\2014-12-25-secure-string-code-generator-a-breakdown.md
 		_posts\2015-01-11-custom-content-type-in-visual-studio-projects.md = _posts\2015-01-11-custom-content-type-in-visual-studio-projects.md
 		_posts\2015-02-01-using-the-winrt-media-apis-to-encode-audio-in-desktop-cs-apps.md = _posts\2015-02-01-using-the-winrt-media-apis-to-encode-audio-in-desktop-cs-apps.md
+		_posts\2015-03-16-creating-debugger-visualizers-for-windows-windows-phone-store-apps.md = _posts\2015-03-16-creating-debugger-visualizers-for-windows-windows-phone-store-apps.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F57B2154-F4D6-4515-B404-A34444D62B4A}"
