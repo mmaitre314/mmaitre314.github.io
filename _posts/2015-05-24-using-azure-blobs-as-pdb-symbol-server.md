@@ -52,3 +52,30 @@ foreach ($file in Get-ChildItem "${tempSymbolPath}*.pd_" -Recurse)
 For a full code sample see this NuGet package [publication script](https://github.com/mmaitre314/MediaReader/blob/master/MediaCaptureReader/Package/publish.ps1).
 
 Once a symbol server has been set up, the next step is to extend it to provide source files along symbols. This is left as an exercise to the reader (because I have not done it yet...) but the [GitHub Source Symbol Indexer](http://hamishgraham.net/post/GitHub-Source-Symbol-Indexer.aspx) script provides a good starting point.
+
+*Edit:* the source-server doc pre-dates Git and it shows, but getting the debugger to retrieve source files from GitHub is actually just a matter of injecting a short text file into the PDB using pdbstr.exe from the Windows SDK.
+
+{% highlight yaml %}
+SRCSRV: ini ------------------------------------------------
+VERSION=2
+VERCTRL=http
+SRCSRV: variables ------------------------------------------
+HTTP_ALIAS=https://raw.githubusercontent.com/mmaitre314/IpCamera/v1.0.1/
+HTTP_EXTRACT_TARGET=%HTTP_ALIAS%%var2%
+SRCSRVTRG=%HTTP_EXTRACT_TARGET%
+SRCSRV: source files ---------------------------------------
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\debuggerlogger.h*IpCamera/IpCamera.Shared/DebuggerLogger.h
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\pch.h*IpCamera/IpCamera.Shared/pch.h
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\cameraserver.cpp*IpCamera/IpCamera.Shared/CameraServer.cpp
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\connection.h*IpCamera/IpCamera.Shared/Connection.h
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\cameraserver.h*IpCamera/IpCamera.Shared/CameraServer.h
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\connection.cpp*IpCamera/IpCamera.Shared/Connection.cpp
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\debuggerlogger.cpp*IpCamera/IpCamera.Shared/DebuggerLogger.cpp
+c:\users\matthieu\source\repos\ipcamera\ipcamera\ipcamera.shared\pch.cpp*IpCamera/IpCamera.Shared/pch.cpp
+SRCSRV: end ------------------------------------------------
+{% endhighlight %}
+
+Two more links with more detailed background on symbol servers:
+
+- [Sourcepack](https://docs.google.com/document/d/13VM59LEuNps66TK_vITqKd1TPlUtKDaOg9T2dLnFXnE/edit?hl=en_US)
+- [MSDN](https://msdn.microsoft.com/en-us/library/windows/hardware/ff540151(v=vs.85).aspx)
