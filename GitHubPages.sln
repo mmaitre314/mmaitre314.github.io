@@ -79,6 +79,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D
 		images\SymbolsServerConfig.png = images\SymbolsServerConfig.png
 		images\TalkFaster.jpg = images\TalkFaster.jpg
 		images\TraceEtwWpa.PNG = images\TraceEtwWpa.PNG
+		images\WPFCameraPreview.jpg = images\WPFCameraPreview.jpg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "javascripts", "javascripts", "{8C508256-3A1E-480A-AE3C-D3E7E693FB20}"
