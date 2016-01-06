@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A2A684BD-D8AA-4F14-BACA-AF820A26D72A}"
 	ProjectSection(SolutionItems) = preProject
@@ -66,6 +66,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D
 		images\2014-12-16-WPA.PNG = images\2014-12-16-WPA.PNG
 		images\2015-01-11-PropertyPage.png = images\2015-01-11-PropertyPage.png
 		images\2015-01-11-VsProject.png = images\2015-01-11-VsProject.png
+		images\aad_ids.png = images\aad_ids.png
+		images\aad_manifest.png = images\aad_manifest.png
 		images\BitmapVisualizer.png = images\BitmapVisualizer.png
 		images\bullet.png = images\bullet.png
 		images\CS_W_MediaReader_IpCam.jpg = images\CS_W_MediaReader_IpCam.jpg
@@ -117,6 +119,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB15
 		_posts\2015-03-16-creating-debugger-visualizers-for-windows-windows-phone-store-apps.md = _posts\2015-03-16-creating-debugger-visualizers-for-windows-windows-phone-store-apps.md
 		_posts\2015-05-24-personal-pdb-symbol-server.md = _posts\2015-05-24-personal-pdb-symbol-server.md
 		_posts\2015-05-24-using-azure-blobs-as-pdb-symbol-server.md = _posts\2015-05-24-using-azure-blobs-as-pdb-symbol-server.md
+		_posts\2016-01-05-integrating-power-bi-with-angularjs-spas.md = _posts\2016-01-05-integrating-power-bi-with-angularjs-spas.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F57B2154-F4D6-4515-B404-A34444D62B4A}"
