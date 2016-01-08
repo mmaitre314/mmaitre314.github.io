@@ -12,7 +12,7 @@ comments: true
 Font Awesome's CSS style file points to a TTF font file that can be directly copied into the Visual Studio project. At the time of writing, it is available 
 [here](https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.ttf).
 
-fa-spinner has unicode f110 and animating it is a matter of applying a RotateTransform to a TextBlock and defining an infinite animation as part of a storyboard:
+fa-spinner has unicode f110 and animating it is a matter of applying a RotateTransform to a TextBlock and defining an infinite animation as part of a storyboard in XAML:
 
 {% highlight xml %}
 <Window.Resources>
