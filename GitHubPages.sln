@@ -76,6 +76,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D04C4D
 		images\IpCamera.jpg = images\IpCamera.jpg
 		images\MediaReaderImageWatch.png = images\MediaReaderImageWatch.png
 		images\nav-bg.gif = images\nav-bg.gif
+		images\powerbi_url_filter.png = images\powerbi_url_filter.png
+		images\powerbi_url_gen.png = images\powerbi_url_gen.png
 		images\QrCodeDetector.jpg = images\QrCodeDetector.jpg
 		images\spinner.jpg = images\spinner.jpg
 		images\Symbols.png = images\Symbols.png
@@ -122,6 +124,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB15
 		_posts\2015-05-24-using-azure-blobs-as-pdb-symbol-server.md = _posts\2015-05-24-using-azure-blobs-as-pdb-symbol-server.md
 		_posts\2016-01-05-integrating-power-bi-with-angularjs-spas.md = _posts\2016-01-05-integrating-power-bi-with-angularjs-spas.md
 		_posts\2016-01-07-font-awesome-busy-spinner-in-wpf.md = _posts\2016-01-07-font-awesome-busy-spinner-in-wpf.md
+		_posts\2016-02-13-passing-report-filters-to-power-bi-using-urls.md = _posts\2016-02-13-passing-report-filters-to-power-bi-using-urls.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F57B2154-F4D6-4515-B404-A34444D62B4A}"
