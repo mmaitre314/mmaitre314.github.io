@@ -5,7 +5,9 @@ comments: true
 ---
 
 When creating more than the casual one-off [Power BI](https://powerbi.com) report, the need quickly arises to link reports together and preserve the user selection during navigation.
-Power BI enables that scenario by passing report filters via URL query parameters. For instance, using the [Car Manufacturer dataset](https://en.wikipedia.org/wiki/Automotive_industry#By_manufacturer)
+Power BI enables that scenario by passing report filters via URL query parameters.
+
+For instance, using the [Car Manufacturer dataset](https://en.wikipedia.org/wiki/Automotive_industry#By_manufacturer)
 from Wikipedia, one can create a report displaying basic stats for a given manufacturer and refer to Toyota using an URL like
 [https://msit.powerbi.com/groups/me/reports/3f67c035-afa9-4906-b8af-a7601bb332c2?filter=cars%2FGroup%20eq%20'Toyota'](https://msit.powerbi.com/groups/me/reports/3f67c035-afa9-4906-b8af-a7601bb332c2?filter=cars%2FGroup%20eq%20'Toyota')
 
