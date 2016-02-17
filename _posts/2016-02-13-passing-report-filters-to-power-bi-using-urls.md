@@ -9,7 +9,7 @@ Power BI enables that scenario by passing report filters via URL query parameter
 
 For instance, using the [Car Manufacturer dataset](https://en.wikipedia.org/wiki/Automotive_industry#By_manufacturer)
 from Wikipedia, one can create a report displaying basic stats for a given manufacturer and refer to Toyota using an URL like
-[https://msit.powerbi.com/groups/me/reports/3f67c035-afa9-4906-b8af-a7601bb332c2?filter=cars%2FGroup%20eq%20'Toyota'](https://msit.powerbi.com/groups/me/reports/3f67c035-afa9-4906-b8af-a7601bb332c2?filter=cars%2FGroup%20eq%20'Toyota')
+[https://app.powerbi.com/groups/me/reports/3f67c035-afa9-4906-b8af-a7601bb332c2?filter=cars%2FGroup%20eq%20'Toyota'](https://app.powerbi.com/groups/me/reports/3f67c035-afa9-4906-b8af-a7601bb332c2?filter=cars%2FGroup%20eq%20'Toyota')
 
 ![Power BI report]({{ site.url }}/images/powerbi_url_filter.png)
 
