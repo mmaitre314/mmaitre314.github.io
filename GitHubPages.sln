@@ -125,6 +125,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_posts", "_posts", "{C1AB15
 		_posts\2016-01-05-integrating-power-bi-with-angularjs-spas.md = _posts\2016-01-05-integrating-power-bi-with-angularjs-spas.md
 		_posts\2016-01-07-font-awesome-busy-spinner-in-wpf.md = _posts\2016-01-07-font-awesome-busy-spinner-in-wpf.md
 		_posts\2016-02-13-passing-report-filters-to-power-bi-using-urls.md = _posts\2016-02-13-passing-report-filters-to-power-bi-using-urls.md
+		_posts\2016-03-22-publishing-csharp-cmdlets-to-the-powershell-gallery.md = _posts\2016-03-22-publishing-csharp-cmdlets-to-the-powershell-gallery.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "download", "download", "{F57B2154-F4D6-4515-B404-A34444D62B4A}"
