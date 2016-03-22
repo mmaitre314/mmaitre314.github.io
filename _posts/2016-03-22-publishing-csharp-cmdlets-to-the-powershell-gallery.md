@@ -14,7 +14,7 @@ Install-Module -Name PowerShellGet-Test-Binary-Module -Scope CurrentUser
  
 Creating and publishing a new module is also relatively straightforward, although not exceptionally well documented.
 
-A simple `Write-HelloWorld` cmdlets consists in a class deriving from `Cmdlet` and overriding `BeginProcessing` to output a string:
+A simple `Write-HelloWorld` cmdlet consists in a class deriving from `Cmdlet` that overrides `BeginProcessing` to output a string:
 
 {% highlight csharp %}
 using System.Management.Automation;
@@ -31,7 +31,7 @@ public class HelloWorldCmdlet : Cmdlet
 
 One trick here is finding the `System.Management.Automation` reference. On my machine (Windows 10 x64) it could be found at `c:\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll`.
 
-Once compiled that gives a DLL that can be loaded using `Import-Module`.
+Once compiled, the DLL that can be loaded in PowerShell using `Import-Module`.
 
 To make it a publishable module requires adding a .psd1 PowerShell manifest akin to NuGet's .nuspec XML manifest:
 
@@ -56,7 +56,7 @@ To make it a publishable module requires adding a .psd1 PowerShell manifest akin
 }
 {% endhighlight %}
 
-Both the DLL and .psd1 file need to be placed in a folder whose name is the package name. Once this is done, the package gets uploade to the gallery using
+Both the DLL and .psd1 file need to be placed in a folder whose name is the package name. Once this is done, the package gets uploaded to the gallery using
 
 {% highlight PowerShell %}
 Publish-Module -Path .\PowerShellGet-Test-Binary-Module -Repository PSGallery -NuGetApiKey "xxx"
@@ -64,4 +64,4 @@ Publish-Module -Path .\PowerShellGet-Test-Binary-Module -Repository PSGallery -N
 
 where the API Key comes from [https://powershellgallery.com/account](https://powershellgallery.com/account).
 
-That is it. For the full code and some unit-testing tricks see [this repo](https://github.com/mmaitre314/PowerShellGet-Test-Binary-Module) on GitHub.
+That is it. For the full source code and some unit-testing tricks see [this repo](https://github.com/mmaitre314/PowerShellGet-Test-Binary-Module) on GitHub.
