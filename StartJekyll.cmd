@@ -1,3 +1,3 @@
-call C:\Ruby200\bin\setrbvars.bat
-cd /d "C:\Users\Matthieu\Source\Repos\mmaitre314.github.io"
+call C:\Ruby22\bin\setrbvars.bat
+cd /d "%~dp0"
 jekyll serve
