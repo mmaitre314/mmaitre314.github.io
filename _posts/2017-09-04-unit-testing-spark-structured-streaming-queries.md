@@ -123,5 +123,5 @@ Dataset<Row> stream = input.toDF().selectExpr(
 
 After that, it is just a matter of running the test and getting it to green!
 
-<img src="{{ site.url }}/images/2017-09-04-spark-unit-test.png" alt="Test Screenshot" style="width: 200px;"/>
+<img src="{{ site.url }}/images/2017-09-04-spark-unit-test.png" alt="Test Screenshot" />
 
