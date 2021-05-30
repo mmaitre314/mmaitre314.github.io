@@ -91,7 +91,7 @@ The command prompts for the key.
 
 In Kusto, grant the AAD app ingestor access and initialize the table:
 
-{% highlight CSharp %}
+{% highlight %}
 .add database <database> ingestors ('aadapp=<app_id>;<app_tenant>')
 .create table TestLogstash (timestamp:datetime, message:string, sequence:long)
 .create table TestLogstash ingestion json mapping 'v1' '[{"column":"timestamp","path":"$.@timestamp"},{"column":"message","path":"$.message"},{"column":"sequence","path":"$.sequence"}]'
