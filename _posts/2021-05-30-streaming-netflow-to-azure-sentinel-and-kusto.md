@@ -47,7 +47,7 @@ The command prompts for the key.
 
 Create the configuration file `/etc/logstash/generator-to-sentinel.conf`:
 
-{% highlight javascript %}
+{% highlight %}
 input {
     stdin {}
     generator { count => 10 }
@@ -99,7 +99,7 @@ In Kusto, grant the AAD app ingestor access and initialize the table:
 
 Create the configuration file `/etc/logstash/generator-to-kusto.conf`:
 
-{% highlight javascript %}
+{% highlight %}
 input {
     stdin {}
     generator { count => 10 }
@@ -157,7 +157,7 @@ Redirect the output of Filebeat from ElasticSearch to Logstash. In `/etc/filebea
 
 Create the configuration file `/etc/logstash/filebeat-to-stdout.conf`:
 
-{% highlight javascript %}
+{% highlight %}
 input {
     beats {
         port => 5044
