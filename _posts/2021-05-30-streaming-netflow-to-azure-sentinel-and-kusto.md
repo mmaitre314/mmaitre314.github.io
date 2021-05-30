@@ -47,7 +47,7 @@ The command prompts for the key.
 
 Create the configuration file `/etc/logstash/generator-to-sentinel.conf`:
 
-{% highlight %}
+{% highlight text %}
 input {
     stdin {}
     generator { count => 10 }
@@ -91,7 +91,7 @@ The command prompts for the key.
 
 In Kusto, grant the AAD app ingestor access and initialize the table:
 
-{% highlight %}
+{% highlight text %}
 .add database <database> ingestors ('aadapp=<app_id>;<app_tenant>')
 .create table TestLogstash (timestamp:datetime, message:string, sequence:long)
 .create table TestLogstash ingestion json mapping 'v1' '[{"column":"timestamp","path":"$.@timestamp"},{"column":"message","path":"$.message"},{"column":"sequence","path":"$.sequence"}]'
@@ -99,7 +99,7 @@ In Kusto, grant the AAD app ingestor access and initialize the table:
 
 Create the configuration file `/etc/logstash/generator-to-kusto.conf`:
 
-{% highlight %}
+{% highlight text %}
 input {
     stdin {}
     generator { count => 10 }
@@ -157,7 +157,7 @@ Redirect the output of Filebeat from ElasticSearch to Logstash. In `/etc/filebea
 
 Create the configuration file `/etc/logstash/filebeat-to-stdout.conf`:
 
-{% highlight %}
+{% highlight text %}
 input {
     beats {
         port => 5044
