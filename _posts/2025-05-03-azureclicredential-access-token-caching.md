@@ -29,7 +29,7 @@ wrap_with_token_cache(azure.identity.AzureCliCredential, 'get_token')
 wrap_with_token_cache(azure.identity.AzureCliCredential, 'get_token_info')
 {% endhighlight %}
 
-After this, the rest of the authentication code remains as-is and just starts to run faster.
+After this, the rest of the authentication code remains as-is and just starts to run faster:
 
 {% highlight Python %}
 from azure.identity import DefaultAzureCredential
@@ -38,4 +38,4 @@ credential = DefaultAzureCredential()
 access_token = credential.get_token("https://management.azure.com/.default").token
 {% endhighlight %}
 
-For benchmarking results and a more complete code sample, see the [token_caching.ipynb]({{ site.url }}/download/token_caching.ipynb) notebook.
+For benchmarking results and a more complete code sample, see the [token_caching.ipynb](https://github.com/mmaitre314/mmaitre314.github.io/blob/master/download/token_caching.ipynb) notebook.
