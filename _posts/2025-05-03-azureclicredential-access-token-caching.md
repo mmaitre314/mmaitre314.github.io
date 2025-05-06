@@ -6,7 +6,7 @@ comments: true
 
 Azure's [`DefaultAzureCredential`](https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/overview) is a convenient way to authenticate with Azure REST APIs. It allows the same code to run locally and hosted, abstracting away differences and complexities. The lack of caching on some of the access-token providers which run behind `DefaultAzureCredential`, like `AzureCliCredential` for instance, slows down local development though. At an extra ~3s per HTTP request, this quickly becomes [an](https://github.com/Azure/azure-sdk-for-python/issues/40636)-[noy](https://github.com/Azure/azure-sdk-for-net/issues/32579)-[ing](https://github.com/Azure/azure-sdk-for-go/issues/23533). There are some reasons for the lack of caching: handling multiple users on the same machine with ability to log-off, etc. can be difficult-to-impossible and opens up security concerns. That being said, more often than not development happens on a machine with a single user who does not log off, which makes those non-issues.
 
-In Python, a quick way to cache tokens is to decorate the `get_token()` and `get_token_info()` methods like this:
+In Python, a quick way to cache tokens is to monkey patch the `get_token()` and `get_token_info()` methods like this:
 
 {% highlight Python %}
 import json
