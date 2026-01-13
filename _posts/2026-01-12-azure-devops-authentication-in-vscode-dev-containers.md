@@ -6,7 +6,7 @@ comments: true
 
 [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) allow sandboxing [GitHub coding agents](https://code.visualstudio.com/docs/copilot/agents/overview) and providing agents with the dependencies and tools they need to be successful. In containers, authentication with private Azure DevOps (ADO) artifact feeds can be challenging though. This blog goes over how to streamline ADO authentication using [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli) when restoring packages from Nuget, Maven, or NPM.
 
-TLDR: the [trick](https://github.com/jongio/azure-cli-awesome/blob/main/create-devops-pat.azcli) is to use Azure CLI to authenticate with ADO and generate Personal Access Tokens (PATs), which can then be used in package-manager configs.
+TLDR: the [trick](https://github.com/jongio/azure-cli-awesome/blob/main/create-devops-pat.azcli) is to use Azure CLI to authenticate with ADO and generate Personal Access Tokens (PAT), which can then be used in package-manager configs.
 
 {% highlight shell %}
 az login
@@ -59,7 +59,7 @@ COPY <<EOF /root/.nuget/NuGet/NuGet.Config
 EOF
 {% endhighlight %}
 
-Finally, create a Bash file at `/.devcontainer/ado-login.sh` that logs-in using Azure CLI, generates a PAT, and update the user Nuget config with it.
+Finally, create a Bash file at `/.devcontainer/ado-login.sh` that logs-in using Azure CLI, generates a PAT, and sets the PAT in the user Nuget config.
 
 {% highlight shell %}
 #!/bin/bash
