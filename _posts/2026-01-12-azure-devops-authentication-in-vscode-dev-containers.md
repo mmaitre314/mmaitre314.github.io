@@ -4,9 +4,9 @@ title: Azure DevOps authentication in VSCode Dev Containers
 comments: true
 ---
 
-[VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) allow sandboxing [GitHub coding agents](https://code.visualstudio.com/docs/copilot/agents/overview) and providing agents with the dependencies and tools they need to be successful. In containers, authentication with private Azure DevOps (ADO) artifact feeds can be challenging though. This blog goes over how to streamline ADO authentication using [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli) when restoring packages from Nuget, Maven, or NPM.
+[VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) allow sandboxing [GitHub coding agents](https://code.visualstudio.com/docs/copilot/agents/overview) and providing agents with the dependencies and tools they need to be successful. In containers, authentication with private Azure DevOps (ADO) artifact feeds can be challenging though. Containers typically don't have a UI, let alone a browser, and interactive authentication requires showing a log-in page. This blog goes over how to streamline ADO authentication using [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli) when restoring packages from Nuget, Maven, or NPM. This leverages VSCode's authentication proxy which lets Azure CLI in the container open an Entra log-in page on the host and get an access token back.
 
-TLDR: the [trick](https://github.com/jongio/azure-cli-awesome/blob/main/create-devops-pat.azcli) is to use Azure CLI to authenticate with ADO and generate Personal Access Tokens (PAT), which can then be used in package-manager configs.
+TLDR (with thanks to [azure-cli-awesome](https://github.com/jongio/azure-cli-awesome/blob/main/create-devops-pat.azcli)): have Azure CLI authenticate with ADO, generate a Personal Access Token (PAT), and set the PAT in user package-manager configs.
 
 {% highlight shell %}
 az login
@@ -14,6 +14,8 @@ az rest --method post --uri "https://vssps.dev.azure.com/{org}/_apis/Tokens/Pats
 {% endhighlight %}
 
 > In the code snippets, replace `{org}` with your ADO organization and `{feed}` with your ADO artifact feed.
+
+Storing PATs in user configs outside of code repos ensures those secrets do not end up checked-in by mistake.
 
 # Nuget
 
