@@ -97,7 +97,7 @@ For [Maven](https://maven.apache.org/), follow a similar setup with the user con
 
 For [NPM](https://www.npmjs.com/), do the same with the user config at `~/.npmrc`, after applying an extra base64-encoding to the PAT by piping it through `| base64 -w0`.
 
-{% highlight ini %}
+{% highlight c %}
 ; begin auth token
 //{org}.pkgs.visualstudio.com/_packaging/{feed}/npm/registry/:username={org}
 //{org}.pkgs.visualstudio.com/_packaging/{feed}/npm/registry/:_password=placeholder
