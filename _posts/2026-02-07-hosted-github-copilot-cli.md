@@ -108,6 +108,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 {% endhighlight %}
 
+Caveat: at the time of writing (2/26), the SDK does not support refreshing tokens. So runs are limited to 1h with user tokens and 24h with managed-identity tokens.
+
 Run locally:
 
 {% highlight shell %}
