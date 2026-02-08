@@ -24,11 +24,11 @@ First, deploy an OpenAI model in [Azure AI Foundry](https://ai.azure.com/). Take
 }
 {% endhighlight %}
 
-Grant the [Cognitive Services OpenAI User](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/ai-machine-learning#cognitive-services-openai-user) RBAC role to both your user account (for local development) and the [Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) (for cloud deployment).
+Grant the [Cognitive Services OpenAI User](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/ai-machine-learning#cognitive-services-openai-user) RBAC role to both your user account (for local development) and the service [Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) (for cloud deployment).
 
 # Build the Container
 
-The container needs Copilot CLI, the Copilot SDK, and during local development Azure CLI. Azure CLI provides two flavors of interactive user authentication: device code in regular containers and browser pop-up in [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).
+The container needs the Copilot CLI, the Copilot SDK, and during local development the Azure CLI. Azure CLI provides two flavors of interactive user authentication: device code in regular containers and browser pop-up in [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).
 
 {% highlight docker %}
 FROM debian:trixie
@@ -117,4 +117,4 @@ python3 ./main.py
 
 # Deploy to the Cloud
 
-From here, deploy the container to [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview) (or similar). Assign a Managed Identity to the container app, grant it the Cognitive Services OpenAI User role, and skip `INSTALL_AZ_CLI` from the build args. `DefaultAzureCredential` will automatically pick up the managed identity.
+From here, deploy the container to [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview) (or similar). Assign a Managed Identity to the container app, grant it the Cognitive Services OpenAI User role, and skip `INSTALL_AZ_CLI` in the build args. `DefaultAzureCredential` will automatically pick up the managed identity.
