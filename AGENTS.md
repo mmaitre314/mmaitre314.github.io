@@ -1,0 +1,1 @@
+This is a blog for a very technical audience. Blog entries a concise and to the point. Just enough background info is provided to set context, but no more. Links are provided for interested readers to read further.
