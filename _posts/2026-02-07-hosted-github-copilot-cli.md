@@ -4,9 +4,7 @@ title: Hosted GitHub Copilot CLI
 comments: true
 ---
 
-[GitHub Copilot](https://github.com/features/copilot) offers powerful agentic orchestration: multi-turn reasoning, built-in tools, file access, context management, subagents, etc. A great tool to develop AI workflows.
-
-Until recently though, hosting these workflows in the cloud was not possible: Copilot required both UI and interactive user authentication. The release of the[Copilot CLI](https://github.com/github/copilot-cli) and its [SDK](https://github.com/github/copilot-sdk) changed this. The CLI removed the UI dependency, and the SDK enabled service authentication via [BYOK](https://github.com/github/copilot-sdk/blob/main/docs/auth/byok.md) (Bring Your Own Key). This allows developing AI workflows locally and deploying them as-is to the cloud.
+[GitHub Copilot](https://github.com/features/copilot) offers powerful agentic orchestration: multi-turn reasoning, built-in tools, file access, context management, subagents, etc. A great tool to develop AI workflows. Until recently though, hosting these workflows in the cloud was not possible: Copilot required both UI and interactive user authentication. The release of the [Copilot CLI](https://github.com/github/copilot-cli) and its [SDK](https://github.com/github/copilot-sdk) changed this. The CLI removed the UI dependency, and the SDK enabled service authentication via [BYOK](https://github.com/github/copilot-sdk/blob/main/docs/auth/byok.md) (Bring Your Own Key). This enabled developing AI workflows locally and deploying them as-is to the cloud.
 
 # Deploy an AI Model in Azure AI Foundry
 
@@ -26,7 +24,7 @@ First, deploy an OpenAI model in [Azure AI Foundry](https://ai.azure.com/). Take
 }
 {% endhighlight %}
 
-Grant the [Cognitive Services OpenAI User](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/ai-machine-learning#cognitive-services-openai-user) RBAC role to both your user account (for local dev) and the [Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) (for cloud deployment).
+Grant the [Cognitive Services OpenAI User](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/ai-machine-learning#cognitive-services-openai-user) RBAC role to both your user account (for local development) and the [Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) (for cloud deployment).
 
 # Build the Container
 
