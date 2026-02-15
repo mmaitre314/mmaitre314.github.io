@@ -4,7 +4,7 @@ title: Authoring PySpark Notebooks with GitHub Copilot
 comments: true
 ---
 
-[Apache Spark](https://spark.apache.org/) is great for data processing at scale. [GitHub Copilot](https://github.com/features/copilot) agents are great at writing data-processing code. Getting the two to work together can be challenging though. Agents work best when they can validate the code they write, running it locally, executing tests, and iterating on failures. At the same time, setting up a local Spark cluster can be complex and time-consuming. [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) bridge the gap: they streamline local Spark setup so agents can author PySpark notebooks that are then deployed to larger clusters.
+[Apache Spark](https://spark.apache.org/) is great for data processing at scale. [GitHub Copilot](https://github.com/features/copilot) agents are great at writing data-processing code. Getting the two to work together can be challenging though. Agents work best when they can validate the code they write, running it locally, executing tests, and iterating on failures. At the same time, setting up a local Spark cluster can be cumbersome and time-consuming. [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) bridge the gap: they streamline local Spark setup so agents can author PySpark notebooks that are then deployed to larger clusters.
 
 Two things are needed: a Dev Container config to provide the Spark runtime, and agent instructions to guide code generation and testing.
 
