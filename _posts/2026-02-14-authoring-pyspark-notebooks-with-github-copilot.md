@@ -10,7 +10,7 @@ Two things are needed: a Dev Container config to provide the Spark runtime, and 
 
 # Dev Container
 
-Dev Containers provide both a sandbox to prevent agents from damaging the host machine and the tools agents need to be successful (local Spark cluster, Pytest, Jupyter notebooks, etc.).
+Dev Containers provide both a sandbox to prevent agents from damaging the host machine and the tools agents need to be successful (local Spark cluster, pytest, Jupyter notebooks, etc.).
 
 Create `.devcontainer/Dockerfile`. Most of the Spark setup is handled by Spark's [official Docker image](https://hub.docker.com/_/spark). On top of it, add git, set Python environment variables, and install packages for testing, data-processing, and notebooks.
 
@@ -27,7 +27,7 @@ ENV PYSPARK_PYTHON=/usr/bin/python3
 ENV PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 {% endhighlight %}
 
-Then add `.devcontainer/devcontainer.json` to reference the Dockerfile, configure VSCode extensions for Python, Copilot, and notebooks, and enable auto-approval of agent actions within the container sandbox.
+Then add `.devcontainer/devcontainer.json` to reference the Dockerfile, configure VSCode extensions for Python, Copilot, and notebooks, and enable auto-approval of agent actions within the container sandbox (sandboxed YOLO).
 
 {% highlight json %}
 {
@@ -53,7 +53,7 @@ Then add `.devcontainer/devcontainer.json` to reference the Dockerfile, configur
 
 # Agent Instructions
 
-Agents perform best when they can validate their code and correct errors. Providing guidance via an `AGENTS.md` file or a spec helps, especially for patterns agents may not have encountered often during training.
+Agents perform best when they can validate their code and correct errors. Providing guidance via an [AGENTS.md](https://agents.md/) file or a spec helps, especially for patterns models may not have encountered often during training.
 
 For instance, starting a local Spark session with [Delta Lake](https://delta.io/) support is not completely trivial. A short code snippet in the instructions goes a long way:
 
@@ -70,7 +70,7 @@ spark = (
 )
 {% endhighlight %}
 
-Agents are good at writing [pytest](https://docs.pytest.org/) tests but less familiar with running notebooks from within them. It helps to remind agents that `.ipynb` files are JSON: load them, loop through the code strings at `$.cells[*].source`, and execute each one via `exec()`.
+Agents are good at writing [pytest](https://docs.pytest.org/) tests but less familiar with running notebooks from within them. It helps to remind agents that `.ipynb` files are JSON: load them, loop through the code strings at JSONPath `$.cells[*].source`, and execute each one via `exec()`.
 
 It is also useful to instruct agents to group notebook parameters (input/output paths, Spark session, etc.) into the first cell. This makes them easy to override in tests, allowing input/output data paths to be replaced with temporary paths and a shared Spark session to be reused across tests for faster execution.
 
