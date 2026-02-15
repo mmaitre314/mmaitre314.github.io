@@ -4,15 +4,15 @@ title: Authoring PySpark Notebooks with GitHub Copilot
 comments: true
 ---
 
-Apache Spark and AI Agents are both powerfull technologies in their own right. Spark is great for data processing at scale. AI Agents are great at writing data-processing code. Getting the two to work together can be a bit challenging though. AI agents work best when they can validate the code they write, running it locally, executing tests, and iterating on failures. At the same time, setting up a Spark cluster to run locally can be both complex and time consumming. This is where VSCode Dev Containers can help bridge the gap, streamlining local Spark setup for agents to author data-processing Python notebooks that can then be deployed to larger Spark clusters.
+[Apache Spark](https://spark.apache.org/) is great for data processing at scale. [GitHub Copilot](https://github.com/features/copilot) agents are great at writing data-processing code. Getting the two to work together can be challenging though. Agents work best when they can validate the code they write, running it locally, executing tests, and iterating on failures. At the same time, setting up a local Spark cluster can be complex and time-consuming. [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) bridge the gap: they streamline local Spark setup so agents can author PySpark notebooks that are then deployed to larger clusters.
 
-Start by setting up the Dev Container and then create instructions to guide agents (instructions we may become unnecessary if models get trained on this blog...).
+Two things are needed: a Dev Container config to provide the Spark runtime, and agent instructions to guide code generation and testing.
 
 # Dev Container
 
-Dev Containers provide both a sandbox to prevent agents from damaging the host machine and the set of tools that agents need to be successful (local Spark cluster, pytest tests, Jupyter notebooks, etc.).
+Dev Containers provide both a sandbox to prevent agents from damaging the host machine and the tools agents need to be successful (local Spark cluster, Pytest, Jupyter notebooks, etc.).
 
-Start by creating `.devcontainer/Dockerfile`. Most of the Spark setup is handled by Spark's [official Docker image](https://hub.docker.com/_/spark). We only need to add some tools like git, set a few environment variables for Python, and add a few Python packages for testing, data-processing, and notebooks.
+Create `.devcontainer/Dockerfile`. Most of the Spark setup is handled by Spark's [official Docker image](https://hub.docker.com/_/spark). On top of it, add git, set Python environment variables, and install packages for testing, data-processing, and notebooks.
 
 {% highlight docker %}
 FROM spark:4.0.1-scala2.13-java21-python3-ubuntu
@@ -27,7 +27,7 @@ ENV PYSPARK_PYTHON=/usr/bin/python3
 ENV PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 {% endhighlight %}
 
-Then add `.devcontainer/devcontainer.json` to reference the Dockerfile, set a few VSCode settings for Python and Copilot (making AI agent YOLO within the boundary of the container sandbox), and add a few VSCode extensions for Python, Copilot, and notebooks.
+Then add `.devcontainer/devcontainer.json` to reference the Dockerfile, configure VSCode extensions for Python, Copilot, and notebooks, and enable auto-approval of agent actions within the container sandbox.
 
 {% highlight json %}
 {
@@ -51,15 +51,13 @@ Then add `.devcontainer/devcontainer.json` to reference the Dockerfile, set a fe
 }
 {% endhighlight %}
 
-# Agent instructions
+# Agent Instructions
 
-Agents perform best when they can validate their code and correct errors.
+Agents perform best when they can validate their code and correct errors. Providing guidance via an `AGENTS.md` file or a spec helps, especially for patterns agents may not have encountered often during training.
 
-guide agents through instructions, be it a spec, an AGENTS.md, etc. Give them hints when they need to rely on patterns they might not have seen very often during their training.
+For instance, starting a local Spark session with [Delta Lake](https://delta.io/) support is not completely trivial. A short code snippet in the instructions goes a long way:
 
-For instance, starting a local Spark session with support for Delta tables is not completely trivial, so giving a short code snippet helps: 
-
-{% highlight json %}
+{% highlight python %}
 from pyspark.sql import SparkSession
 
 spark = (
@@ -72,8 +70,8 @@ spark = (
 )
 {% endhighlight %}
 
-For testing, agents are very good at writting Pytest tests but less used to run notebooks from within such tests. It helps to remind agents that .ipynb notebook file are first and foremost JSON files, which can be loaded as JSON and executed by looping through JSON code strings at `$.cells[*].source` and executing them one by one.
+Agents are good at writing [pytest](https://docs.pytest.org/) tests but less familiar with running notebooks from within them. It helps to remind agents that `.ipynb` files are JSON: load them, loop through the code strings at `$.cells[*].source`, and execute each one via `exec()`.
 
-It is also helpful to suggest agents group the notebook parameters into the first notebook cell, so that they are easy to replace when running tests. This allows replacing input/output data paths with temporary paths, or reusing a Spark session across tests to speed things up.
+It is also useful to instruct agents to group notebook parameters (input/output paths, Spark session, etc.) into the first cell. This makes them easy to override in tests, allowing input/output data paths to be replaced with temporary paths and a shared Spark session to be reused across tests for faster execution.
 
-For more details, see the companion GitHub repo at https://github.com/mmaitre314/pyspark-ai .
+For a complete working example, see the companion repo at [github.com/mmaitre314/pyspark-ai](https://github.com/mmaitre314/pyspark-ai).
