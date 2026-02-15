@@ -6,6 +6,5 @@ This is a blog for a very technical audience. Blog entries are concise and to th
 - Key technologies and tools are linked inline on first mention (e.g. `[Apache Spark](https://spark.apache.org/)`).
 - Intro paragraph sets up the problem and the solution in a few sentences, then a short transition sentence outlines the structure of the post.
 - Section headers use `#` (H1).
-- Code blocks use Jekyll `{% highlight <lang> %}` / `{% endhighlight %}` tags with the correct language (docker, json, python, shell, etc.).
 - Each code block is preceded by a one- or two-sentence lead-in explaining what the code does and where the file goes.
 - Posts end with a link to a companion GitHub repo or notebook when one exists, not a summary or conclusion paragraph.
