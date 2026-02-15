@@ -31,9 +31,21 @@
           <p>Notes to self</p>
           <hr>
         </div>
-        
+                
+        <h2>Blog posts</h2>
+        <ul>
+          {% for post in site.posts %}
+            <li>
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+
         <h2>GitHub projects</h2>
         <ul>
+            <li>
+              <a href="https://github.com/mmaitre314/picklescan">Picklescan</a>
+            </li>
             <li>
               <a href="https://github.com/maitre-matt/PowerBI-AngularJS/">Power BI AngularJS SPA</a>
             </li>
@@ -67,15 +79,6 @@
             <li>
               <a href="https://mmaitre314.github.io/TestStatusBadge/">AppVeyor test-status badge generator</a>
             </li>
-        </ul>
-        
-        <h2>Blog posts</h2>
-        <ul>
-          {% for post in site.posts %}
-            <li>
-              <a href="{{ post.url }}">{{ post.title }}</a>
-            </li>
-          {% endfor %}
         </ul>
 
         <p>&nbsp;</p>
