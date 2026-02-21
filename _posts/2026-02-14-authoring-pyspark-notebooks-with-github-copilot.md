@@ -39,7 +39,7 @@ Then add `.devcontainer/devcontainer.json` to reference the Dockerfile, configur
       "extensions": [ "github.copilot-chat", "ms-python.python", "ms-toolsai.jupyter" ],
       "settings": {
         "chat.tools.autoApprove": true,
-	    "chat.tools.terminal.autoApprove": { "/.*/": true },
+        "chat.tools.terminal.autoApprove": { "/.*/": true },
         "chat.tools.terminal.ignoreDefaultAutoApproveRules": true,
         "chat.tools.edits.autoApprove": { "**/*": true, "**/.git/**": false },
         "chat.agent.maxRequests": 100,
