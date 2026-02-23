@@ -24,7 +24,13 @@ To create the skill, start with a mini-spec giving an overview of what the skill
 >
 > Use Python as coding language.
 >
-> Use Azure CLI for authentication. When writing Python, consider using the `azure-identity` package (`DefaultAzureCredential`, `AzureCliCredential`) instead of running Az CLI directly. Note that it does not cache the access tokens from Az CLI, so consider adding a cache where useful to speed things up.
+> Use Azure CLI for authentication. For instance:
+>
+> `az login`
+>
+> `az rest --method post --uri "https://vssps.dev.azure.com/{org}/_apis/Tokens/Pats?api-version=6.1-preview" --resource "https://management.core.windows.net/" --body '{"displayName": "DevContainer", "scope": "vso.packaging"}' --headers Content-Type=application/json --query patToken.token --output tsv`
+>
+> When writing Python, consider using the `azure-identity` package (`DefaultAzureCredential`, `AzureCliCredential`) instead of running Az CLI directly. Note that it does not cache the access tokens from Az CLI, so consider adding a cache where useful to speed things up.
 >
 > Authenticate with ADO using Entra/OAuth. Do not use PATs.
 >
@@ -50,7 +56,7 @@ When creating the [ADO skill repo](https://github.com/mmaitre314/azure-devops-sk
 
 # Dev Container
 
-As in [previous posts](/2026/02/14/authoring-pyspark-notebooks-with-github-copilot/), [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) help sandbox the agent and provide dependencies (here Python and [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli)).
+As in previous posts, [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) help sandbox the agent and provide dependencies (here Python and Azure CLI).
 
 {% highlight json %}
 {
