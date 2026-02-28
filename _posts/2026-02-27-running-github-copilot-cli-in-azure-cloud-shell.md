@@ -4,11 +4,11 @@ title: Running GitHub Copilot CLI in Azure Cloud Shell
 comments: true
 ---
 
-When Azure resources misbehave, [GitHub Copilot](https://github.com/features/copilot) can help find the root cause and propose fixes — provided it has access to those resources. An easy way to achieve this is to run the [Copilot CLI](https://github.com/github/copilot-cli) directly in [Azure Cloud Shell](https://learn.microsoft.com/en-us/azure/cloud-shell/overview), where the Azure CLI and user credentials are already available.
-
-This post covers the setup steps and a couple of approaches to sandbox Copilot's Azure permissions.
+When Azure resources misbehave, [GitHub Copilot](https://github.com/features/copilot) can help find the root cause and propose fixes, provided it has access to those resources. An easy way to achieve this is to run the [Copilot CLI](https://github.com/github/copilot-cli) directly in [Azure Cloud Shell](https://learn.microsoft.com/en-us/azure/cloud-shell/overview), where the Azure CLI and user credentials are already available.
 
 ![GitHub Copilot CLI]({{ site.url }}/images/2026-02-27-GHC.png)
+
+This post covers the setup steps and a couple of approaches to manage Copilot's Azure permissions.
 
 # Setup
 
