@@ -4,47 +4,56 @@ title: Entra token protection
 comments: true
 ---
 
-Entra released [Token Protection](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-token-protection) to tackle access-token theft and ensure access tokens are tied to the machine they were requested from. This is nice but creates some [headaches](https://github.com/Azure/azure-cli/issues/31030). In particular, this breaks browser-based log-in flows. For instance, trying to authenticate with [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview) with this
+[Microsoft Entra](https://learn.microsoft.com/en-us/entra/fundamentals/what-is-entra) released [Token Protection](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-token-protection), a conditional-access policy that binds access tokens to the device they were issued on to harden against token theft. This is a welcome security improvement which brings some [headaches](https://github.com/Azure/azure-cli/issues/31030). In particular, it breaks browser-based interactive login flows. The fix is to switch to [broker-based authentication](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity-broker), which delegates login to the OS authentication broker (Web Account Manager on Windows, Company Portal on macOS, Microsoft Identity Broker on Linux). This post covers the error and the fix.
+
+# The Error
+
+Trying to authenticate with [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview) using `InteractiveBrowserCredential` from the [Azure Identity](https://pypi.org/project/azure-identity/) library:
 
 {% highlight python %}
 from azure.identity import InteractiveBrowserCredential
 
-credential=InteractiveBrowserCredential()
-access_token=credential.get_token('https://graph.microsoft.com/.default').token
+credential = InteractiveBrowserCredential()
+access_token = credential.get_token('https://graph.microsoft.com/.default').token
 {% endhighlight %}
 
-May now show an error pop-up
+now shows an error pop-up when Token Protection is enabled:
 
 > **Sorry, a security policy is preventing access**
 >
 > An organization security policy requiring token protection is preventing this application from accessing the resource. You may be able to use a different application.
 
-and then throw `Authentication failed: access_denied` (see [this notebook](https://github.com/mmaitre314/brokered-auth/blob/main/auth.ipynb) for more details).
+followed by an `Authentication failed: access_denied` exception.
 
-The solution is to replace browser-based auth by [broker-based](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity-broker) auth.
+# Broker-Based Authentication
 
-First, install a couple of extra packages in `requirements.txt` (or equivalent):
+The [azure-identity-broker](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity-broker) package delegates authentication to the OS broker, which produces device-bound tokens that satisfy Token Protection. Add it along with [pywin32](https://pypi.org/project/pywin32/) (needed on Windows to retrieve a window handle) in `requirements.txt` (or equivalent):
 
-{% highlight python %}
+{% highlight text %}
 azure-identity
 azure-identity-broker
 pywin32 ; sys_platform == "win32"
 {% endhighlight %}
 
-Then replace `InteractiveBrowserCredential` by `InteractiveBrowserBrokerCredential` and get a hold of a window handle that will be used to show the log-in pop-up:
+Then replace `InteractiveBrowserCredential` with `InteractiveBrowserBrokerCredential`, passing it a window handle for the login popup:
 
 {% highlight python %}
+import sys
 from azure.identity.broker import InteractiveBrowserBrokerCredential
 
 if sys.platform == "win32":
     import win32gui
-    window_handle=win32gui.GetForegroundWindow()
+    window_handle = win32gui.GetForegroundWindow()
 else:
     import msal
-    window_handle=msal.PublicClientApplication.CONSOLE_WINDOW_HANDLE
+    window_handle = msal.PublicClientApplication.CONSOLE_WINDOW_HANDLE
 
 credential = InteractiveBrowserBrokerCredential(parent_window_handle=window_handle)
-access_token=credential.get_token('https://graph.microsoft.com/.default').token
+access_token = credential.get_token('https://graph.microsoft.com/.default').token
 {% endhighlight %}
 
-One issue remaining is that this requires being able to show a window, which is not easily done within Docker containers, including VSCode Dev Containers.
+One open issue: broker-based auth requires a windowing system, which is not available in Docker containers, including [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers). If someone has a solution, potentially using VSCode's built-in authentication proxy, I am interested...
+
+# GitHub Repo
+
+The companion notebook with the full code sample is at [github.com/mmaitre314/brokered-auth](https://github.com/mmaitre314/brokered-auth).
