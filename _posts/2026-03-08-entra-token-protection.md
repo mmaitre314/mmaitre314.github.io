@@ -52,7 +52,7 @@ credential = InteractiveBrowserBrokerCredential(parent_window_handle=window_hand
 access_token = credential.get_token('https://graph.microsoft.com/.default').token
 {% endhighlight %}
 
-One open issue: broker-based auth requires a windowing system, which is not available in Docker containers, including [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers). If someone has a solution, potentially using VSCode's built-in authentication proxy, I am interested...
+One open issue: broker-based authentication requires a windowing system, which is not available in Docker containers, including [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers). If someone has a solution, potentially using VSCode's built-in authentication proxy, I am interested...
 
 # GitHub Repo
 
