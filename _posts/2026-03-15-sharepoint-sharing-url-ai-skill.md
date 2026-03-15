@@ -4,10 +4,8 @@ title: SharePoint Sharing URL AI Skill
 comments: true
 ---
 
-Leverage TSGs, SOPs, etc.
-
 AI agent download docs from Sharepoint (convert to markdown)
-
+helping AI agents download documents from SharePoint. To take advantage of all the TSGs, SOPs, etc. already written for humans to follow.
 
 TODO: download_sharing_url.py to test code
 
