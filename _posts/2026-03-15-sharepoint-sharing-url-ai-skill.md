@@ -4,11 +4,11 @@ title: SharePoint Sharing-URL AI Skill
 comments: true
 ---
 
-Organizations accumulate large volumes of operational knowledge—TSGs, SOPs, runbooks—in [SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) as Word, Excel, and other Office documents. AI agents can leverage these documents if they can download and convert them to a format they understand. This post builds a skill that takes a SharePoint sharing URL, downloads the file via [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview), and converts it to Markdown using [MarkItDown](https://github.com/microsoft/markitdown). It covers dependency setup, URL encoding, authentication, download, and conversion.
+Organizations accumulate large volumes of knowledge in [SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) as Word, Excel, PowerPoint, and other Office documents. Troubleshouting Guides (TSGs), Standard Operating Procedures (SOPs), specs, checklists, etc. are invaluable for AI agents to perform their tasks, as long as they are able to download them and convert them to a format they understand. This post goes over the key steps needed to create a skill that takes a SharePoint sharing URL, downloads the file via [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview), and converts it to Markdown using [MarkItDown](https://github.com/microsoft/markitdown).
 
 # Dependencies
 
-Add the following packages to `requirements.txt`:
+Start by adding the following Python packages to `requirements.txt` (or equivalent):
 
 {% highlight text %}
 azure-identity
@@ -18,11 +18,11 @@ markitdown[docx]
 requests
 {% endhighlight %}
 
-[azure-identity-broker](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity-broker) handles [broker-based authentication]({% post_url 2026-03-08-entra-token-protection %}) needed when [Token Protection](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-token-protection) is enabled.
+[azure-identity-broker](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity-broker) handles [broker-based authentication]({% post_url 2026-03-08-entra-token-protection %}) needed when [Entra Token Protection](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-token-protection) is enabled on Microsoft 365.
 
-# Sharing URL Encoding
+# Sharing-URL Encoding
 
-Clicking the **Share** button in Word, Excel, etc. stored in SharePoint produces a sharing URL like:
+Clicking the 'Share' button in Word/Excel/etc. produces a Sharing URL such as this when the documents are stored in SharePoint:
 
 {% highlight text %}
 https://contoso.sharepoint.com/:w:/r/teams/engineering/Shared%20Documents/Report.docx?d=w1234&csf=1
@@ -38,7 +38,7 @@ sharing_token = "u!" + urlsafe_b64encode(url.encode("utf-8")).decode("ascii").rs
 
 # Authentication
 
-Authentication uses the broker credential with the Microsoft Office client ID (`d3590ed6-52b3-4102-aeff-aad2292ab01c`) to ensure sufficient permissions on SharePoint files:
+Authenticating using an auth broker and the Microsoft Office client ID (`d3590ed6-52b3-4102-aeff-aad2292ab01c`) ensures sufficient permissions on SharePoint files:
 
 {% highlight python %}
 from sys import platform
@@ -61,7 +61,7 @@ access_token = credential.get_token("https://graph.microsoft.com/.default").toke
 
 # Download
 
-Download the file content using the sharing token and the Graph `driveItem/content` endpoint:
+Download the file content using the sharing token and the MS Graph `GET /shares/driveItem/content` endpoint:
 
 {% highlight python %}
 import requests
