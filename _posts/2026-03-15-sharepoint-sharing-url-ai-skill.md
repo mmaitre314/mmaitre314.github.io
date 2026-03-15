@@ -76,7 +76,7 @@ with open(path, "wb") as file:
 
 Behind the scenes, `requests` automatically follows a `302 Found` redirect to a pre-authenticated (i.e. no extra `Authorization` header needed) download URL provided in the `Location` header.
 
-# Convert to Markdown
+# Markdown Conversion
 
 MarkItDown converts the downloaded file to Markdown, ready for consumption by AI agents:
 
