@@ -4,18 +4,21 @@ title: SharePoint Sharing-URL AI Skill
 comments: true
 ---
 
+Help AI agents download documents from SharePoint. To take advantage of all the TSGs, SOPs, etc. already written for humans to follow.
+Use the Microsoft Graph REST APIs to download the file and markitdown to convert to Markdown.
 AI agent download docs from Sharepoint (convert to markdown)
-helping AI agents download documents from SharePoint. To take advantage of all the TSGs, SOPs, etc. already written for humans to follow.
 
-TODO: download_sharing_url.py to test code
-
-Sharing URL:
+Clicking the 'Share' button in Word, Excel, etc. stored in SharePoint creates a 'Sharing URL' like this
 
 {% highlight python %}
 url = https://contoso.sharepoint.com/:w:/r/teams/engineering/Shared%20Documents/Report.docx?d=w1234&csf=1
 {% endhighlight %}
 
+To download the file and convert it to a local file in Markdown ready to be consummed by AI agents:
+
 // Requirements.txt
+
+Install Python packages
 
 {% highlight text %}
 azure-identity
