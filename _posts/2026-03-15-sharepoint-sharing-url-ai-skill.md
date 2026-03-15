@@ -24,8 +24,8 @@ requests
 
 Clicking the 'Share' button in Word/Excel/etc. produces a Sharing URL such as this when the documents are stored in SharePoint:
 
-{% highlight text %}
-https://contoso.sharepoint.com/:w:/r/teams/engineering/Shared%20Documents/Report.docx?d=w1234&csf=1
+{% highlight python %}
+url = "https://contoso.sharepoint.com/:w:/r/teams/engineering/Shared%20Documents/Report.docx?d=w1234&csf=1"
 {% endhighlight %}
 
 The [Shares API](https://learn.microsoft.com/en-us/graph/api/shares-get) in Microsoft Graph accepts these URLs after encoding them into a sharing token using Base64:
@@ -38,18 +38,18 @@ sharing_token = "u!" + urlsafe_b64encode(url.encode("utf-8")).decode("ascii").rs
 
 # Authentication
 
-Authenticating using an auth broker and the Microsoft Office client ID (`d3590ed6-52b3-4102-aeff-aad2292ab01c`) ensures sufficient permissions on SharePoint files:
+Authenticating using an auth broker and the Microsoft Office client ID (`d3590ed6-52b3-4102-aeff-aad2292ab01c`) provide the permissions and token protection required to access SharePoint files:
 
 {% highlight python %}
 from sys import platform
 from azure.identity.broker import InteractiveBrowserBrokerCredential
 
 if platform == "win32":
-    import win32gui
-    window_handle = win32gui.GetForegroundWindow()
+    from win32gui import GetForegroundWindow
+    window_handle = GetForegroundWindow()
 else:
-    import msal
-    window_handle = msal.PublicClientApplication.CONSOLE_WINDOW_HANDLE
+    from msal import PublicClientApplication
+    window_handle = PublicClientApplication.CONSOLE_WINDOW_HANDLE
 
 credential = InteractiveBrowserBrokerCredential(
     client_id="d3590ed6-52b3-4102-aeff-aad2292ab01c",
@@ -61,20 +61,20 @@ access_token = credential.get_token("https://graph.microsoft.com/.default").toke
 
 # Download
 
-Download the file content using the sharing token and the MS Graph `GET /shares/driveItem/content` endpoint:
+Download the file content by passing the sharing token along with the access token to the MS Graph `GET /shares/driveItem/content` endpoint:
 
 {% highlight python %}
 import requests
 
-r = requests.get(
+response = requests.get(
     f"https://graph.microsoft.com/v1.0/shares/{sharing_token}/driveItem/content",
     headers={"Authorization": f"Bearer {access_token}"},
 )
-with open(path, "wb") as f:
-    f.write(r.content)
+with open(path, "wb") as file:
+    file.write(response.content)
 {% endhighlight %}
 
-Behind the scenes, `requests` automatically follows a `302 Found` redirect to a pre-authenticated download URL in the `Location` header—no extra authorization handling needed.
+Behind the scenes, `requests` automatically follows a `302 Found` redirect to a pre-authenticated (i.e. no extra `Authorization` header needed) download URL provided in the `Location` header.
 
 # Convert to Markdown
 
@@ -86,4 +86,4 @@ markitdown Report.docx > Report.md
 
 # GitHub Repo
 
-The companion repo with the full code sample is at [github.com/mmaitre314/m365-skill](https://github.com/mmaitre314/m365-skill).
+A companion repo with the full code sample is available at [github.com/mmaitre314/m365-skill](https://github.com/mmaitre314/m365-skill).
