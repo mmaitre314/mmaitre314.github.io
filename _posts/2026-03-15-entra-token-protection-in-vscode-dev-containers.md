@@ -4,17 +4,17 @@ title: Entra Token Protection in VSCode Dev Containers
 comments: true
 ---
 
-This blog is a follow up on [Entra token protection]({% post_url 2026-03-08-entra-token-protection %}) with a solution to get device-bound tokens inside VSCode Dev Containers. The challenge with Entra token protection is Docker containers are typically console-based and do not have a a windowing system while token protection relies on authentication brokers which require WebKitGTK and X11. One solution is to run the authentication broker on the host, wrap it in an HTTP server, make the HTTP server behave like the Azure App Service managed-identity endpoint, and have Azure Identity code running in the container call it that endpoint.
+A previous post on [Entra Token Protection]({% post_url 2026-03-08-entra-token-protection %}) noted that broker-based authentication requires a windowing system, which Docker containers lack. This post presents a workaround: run the authentication broker on the host inside a local HTTP server that mimics the [Azure App Service managed-identity endpoint](https://learn.microsoft.com/en-us/azure/app-service/overview-managed-identity), and have [Azure Identity](https://pypi.org/project/azure-identity/)'s `ManagedIdentityCredential` in the container call that endpoint via Docker's `host.docker.internal` hostname. The post covers the HTTP server and the [VSCode Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) configuration.
 
-// Local HTTP Server
+# Local HTTP Server
 
-Wrap Azure Identity's `InteractiveBrowserBrokerCredential` in Python' `HTTPServer` so it responds to `GET http://127.0.0.1:40342/oauth2/token` requests with a JSON with two properties `access_token` and `expires_on`.
+The host-side server wraps `InteractiveBrowserBrokerCredential` from [azure-identity-broker](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity-broker) in Python's built-in `HTTPServer`. It listens on `http://127.0.0.1:40342` and responds to `GET /oauth2/token` requests with a JSON body containing `access_token` and `expires_on`, matching the response format of the [App Service managed-identity token endpoint](https://learn.microsoft.com/en-us/azure/app-service/overview-managed-identity#rest-endpoint-reference). The `resource` query parameter and `X-IDENTITY-HEADER` request header are forwarded from the container request to select the token scope and validate the caller.
 
-For details, see https://github.com/mmaitre314/auth-broker-server/blob/main/auth_broker_server.py
+The full server implementation is at [auth_broker_server.py](https://github.com/mmaitre314/auth-broker-server/blob/main/auth_broker_server.py).
 
-// Dev Container
+# Dev Container
 
-The define a VSCode Dev Container config. Install `azure-identity` to get access to `ManagedIdentityCredential`. Set the `IDENTITY_ENDPOINT` and `IDENTITY_HEADER` environment variables of Azure App Service managed identity, and in `IDENTITY_ENDPOINT` leverage Docker's `host.docker.internal` hostname to send requests from the container to the host.
+The Dev Container configuration installs `azure-identity` and sets the `IDENTITY_ENDPOINT` and `IDENTITY_HEADER` environment variables that `ManagedIdentityCredential` reads at runtime. `IDENTITY_ENDPOINT` uses `host.docker.internal` to route token requests from the container to the host-side HTTP server.
 
 {% highlight json %}
 {
@@ -33,6 +33,15 @@ The define a VSCode Dev Container config. Install `azure-identity` to get access
 }
 {% endhighlight %}
 
+Code running in the container then acquires device-bound tokens without any broker or windowing dependency:
+
+{% highlight python %}
+from azure.identity import ManagedIdentityCredential
+
+credential = ManagedIdentityCredential()
+token = credential.get_token("https://graph.microsoft.com/.default").token
+{% endhighlight %}
+
 # GitHub Repo
 
-A companion repo with the full code sample is available at [github.com/mmaitre314/auth-broker-server](https://github.com/mmaitre314/auth-broker-server).
+The companion repo with the full code sample is at [github.com/mmaitre314/auth-broker-server](https://github.com/mmaitre314/auth-broker-server).
